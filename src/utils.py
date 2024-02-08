@@ -15,7 +15,10 @@ class Category:
         self.products = products
 
         Category.number_of_categories += 1
-        Category.number_of_unique_products += 1
+        Category.number_of_unique_products == len(products)
+
+category_1 = Category('Fruits', 'Fresh fruits', ['apple', 'orange', 'banana'])
+category_2 = Category('Vegetables', 'Fresh vegetables', ['cucumber', 'tomato', 'potato'])
 
 class Product:
     name: str

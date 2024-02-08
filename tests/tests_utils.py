@@ -17,6 +17,12 @@ def number_of_categories():
 def test_init(number_of_categories):
     assert Category.number_of_categories == 2
 
+@pytest.fixture
+def number_of_unique_products():
+    return Category('Fruits', 'Fresh fruits', ['apple', 'orange', 'banana'])
+def test_init(number_of_unique_products):
+    assert Category.number_of_unique_products == 3
+
 
 @pytest.fixture
 def product_orange():
