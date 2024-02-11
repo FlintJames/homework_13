@@ -1,6 +1,6 @@
 import pytest
 
-from src.utils import Category, Product
+from src.utils import Category, Product, products()
 @pytest.fixture
 def category_fruits():
     return Category('Fruits', 'Fresh fruits', ['apple', 'orange', 'banana'])
@@ -32,3 +32,7 @@ def test_init(product_orange):
     assert product_orange.description == 'Fresh orange'
     assert product_orange.price == 79.99
     assert product_orange.quantity_in_stock == 5
+
+def test_products():
+    self.__products = 'Orange'
+    assert products == self.__products
