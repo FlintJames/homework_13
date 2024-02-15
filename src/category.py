@@ -8,7 +8,6 @@ class Category:
 
     number_of_categories = 0
     number_of_unique_products = 0
-    number_of_products = 0
 
     def __init__(self, name, description, products):
         self.name = name
@@ -19,7 +18,7 @@ class Category:
         Category.number_of_unique_products += len(products)
 
     def add_product(self, products):
-        Category.number_of_products += 1
+        Category.number_of_unique_products += 1
         return self.__products.append(products)
 
 
@@ -27,8 +26,8 @@ class Category:
     def products(self):
         list_of_products = []
         for products in self.__products:
-            list_of_products.append(f"{products['name']}, {products['price']} руб. Остаток: {products['quantity']} шт.\n")
-        return ''.join(list_of_products)
+            list_of_products.append(f"{products['name']}, {products['price']} руб. Остаток: {products['quantity']} шт.")
+        return list_of_products
 
 
 

@@ -13,13 +13,8 @@ class Product:
 
 
     @classmethod
-    def create_product(cls):
-        product_data = {
-            'name': 'Груша',
-            'description': 'Спелая ароматная груша',
-            'price': 99.99,
-            'quantity_in_stock': 30
-        }
+    def create_product(cls, name, description, price, quantity_in_stock):
+        product_data = {name, description, price, quantity_in_stock}
         new_product_instance = Product.create_product(product_data)
         return new_product_instance
 
