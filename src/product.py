@@ -1,3 +1,5 @@
+from src.category import Category
+
 class Product:
     name: str
     description: str
@@ -13,10 +15,10 @@ class Product:
 
 
     @classmethod
-    def create_product(cls, name, description, price, quantity_in_stock):
-        product_data = {name, description, price, quantity_in_stock}
+    def create_product(cls, product_data):
+        name, description, price, quantity_in_stock = product_data
         new_product_instance = Product.create_product(product_data)
-        return new_product_instance
+        return cls(name, description, price, quantity_in_stock)
 
 
     @property
@@ -29,3 +31,26 @@ class Product:
             print("Введена некорректная цена")
         else:
             self.__price = cost
+
+
+pear_data = {
+    'name': 'Груша',
+    'description': 'Спелая ароматная груша',
+    'price': 99.99,
+    'quantity_in_stock': 30
+}
+apple_data = {
+    'name': 'Яблоко',
+    'description': 'Красное сочное яблоко',
+    'price': 66.70,
+    'quantity_in_stock': 22
+}
+
+# создаем экземпляры, отдавая в метод данные
+pear = Category.create_product(pear_data)
+apple = Category.create_product(apple_data)
+
+print(pear.name)
+
+print(apple.name)
+

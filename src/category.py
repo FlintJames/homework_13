@@ -31,7 +31,6 @@ class Category:
 
 
 
-
 category_1 = Category('Фрукты', 'Свежие фрукты', [
                                                  {'name': 'Яблоко',
                                                   'price': 70,
