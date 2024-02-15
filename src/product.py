@@ -16,7 +16,7 @@ class Product:
 
     @classmethod
     def create_product(cls, product_data):
-        name, description, price, quantity_in_stock = product_data
+        name, description, price, quantity_in_stock = product_data ['name','description','price','quantity_in_stock']
         new_product_instance = Product.create_product(product_data)
         return cls(name, description, price, quantity_in_stock)
 
