@@ -35,4 +35,6 @@ class Category:
 category_1 = Category('Фрукты', 'Свежие фрукты', all_products)
 
 
-print(category_1.products)
+print(category_1.products[0])
+print(category_1.products[1])
+print(category_1.products[2])
