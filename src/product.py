@@ -1,4 +1,3 @@
-from src.category import Category
 
 class Product:
     name: str
@@ -7,18 +6,20 @@ class Product:
     quantity_in_stock: int
 
 
-    def __init__(self, name, description, price, quantity_in_stock):
+    def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
         self.__price = price
-        self.quantity_in_stock = quantity_in_stock
+        self.quantity = quantity
 
 
     @classmethod
     def create_product(cls, product_data):
-        name, description, price, quantity_in_stock = product_data ['name','description','price','quantity_in_stock']
-        new_product_instance = Product.create_product(product_data)
-        return cls(name, description, price, quantity_in_stock)
+        name = product_data['name']
+        description = product_data['description']
+        price = product_data['price']
+        quantity = product_data['quantity']
+        return cls(name, description, price, quantity)
 
 
     @property
@@ -37,20 +38,18 @@ pear_data = {
     'name': 'Груша',
     'description': 'Спелая ароматная груша',
     'price': 99.99,
-    'quantity_in_stock': 30
+    'quantity': 30
 }
 apple_data = {
     'name': 'Яблоко',
     'description': 'Красное сочное яблоко',
     'price': 66.70,
-    'quantity_in_stock': 22
+    'quantity': 22
 }
+new_product = Product.create_product(pear_data)
+print(new_product.name)
 
-# создаем экземпляры, отдавая в метод данные
-pear = Category.create_product(pear_data)
-apple = Category.create_product(apple_data)
-
-print(pear.name)
-
-print(apple.name)
-
+product_1 = Product('Яблоко', 'Сочное яблоко', 79.90, 15)
+product_2 = Product('Апельсин', 'Красный ароматный апельсин', 69.99, 30)
+product_3 = Product('Банан', 'Жёлтый манящий банан', 69.99, 30)
+all_products = [product_1, product_2, product_3]
