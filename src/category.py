@@ -17,9 +17,9 @@ class Category:
         Category.number_of_categories += 1
         Category.number_of_unique_products += len(products)
 
-    def add_product(self, products):
+    def add_product(self, product):
         Category.number_of_unique_products += 1
-        return self.__products.append(products)
+        return self.__products.append(product)
 
     @property
     def products(self):
@@ -32,9 +32,21 @@ class Category:
         return list_of_products
 
 
+    def __len__(self):
+        return len(self.__products)
+
+
+    def __str__(self):
+        return f"{self.name}, количество продуктов: {len(self.__products)} шт."
+
+
+
 category_1 = Category('Фрукты', 'Свежие фрукты', all_products)
 
 
 print(category_1.products[0])
 print(category_1.products[1])
 print(category_1.products[2])
+
+
+print(category_1)

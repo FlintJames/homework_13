@@ -22,4 +22,8 @@ def test_init(number_of_categories):
 def number_of_unique_products():
     return Category('Fruits', 'Fresh fruits', ['apple', 'orange', 'banana'])
 def test_init(number_of_unique_products):
-    assert Category.number_of_unique_products == 9
+    assert Category.number_of_unique_products == 6
+
+def test___len__():
+    assert 3
+

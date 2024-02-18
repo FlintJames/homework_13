@@ -33,6 +33,12 @@ class Product:
         else:
             self.__price = cost
 
+    def __str__(self):
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other):
+        return (self.__price * self.quantity) + (other.__price * other.quantity)
+
 
 pear_data = {
     'name': 'Груша',
@@ -53,3 +59,7 @@ product_1 = Product('Яблоко', 'Сочное яблоко', 79.90, 15)
 product_2 = Product('Апельсин', 'Красный ароматный апельсин', 69.99, 30)
 product_3 = Product('Банан', 'Жёлтый манящий банан', 69.99, 30)
 all_products = [product_1, product_2, product_3]
+
+print(product_1)
+
+print(product_1 + product_2)
