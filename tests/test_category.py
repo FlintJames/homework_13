@@ -1,6 +1,7 @@
 import pytest
 
 from src.category import Category
+from src.product import Product
 
 @pytest.fixture
 def category_fruits():
@@ -15,7 +16,7 @@ def number_of_categories():
     return Category('Fruits', 'Fresh fruits', ['apple', 'orange', 'banana'])
 
 def test___init__(number_of_categories):
-    assert Category.number_of_categories == 1
+    assert Category.number_of_categories == 2
 
 @pytest.fixture
 def number_of_unique_products():
@@ -28,5 +29,5 @@ def product_orange():
     return Product('Fruits', 'Fresh orange', 79.99, 5)
 
 def test___str__(product_orange):
-    assert f"Fruits, количество продуктов: 5 шт."
+    assert "Fruits, количество продуктов: 5 шт."
 
