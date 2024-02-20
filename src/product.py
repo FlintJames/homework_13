@@ -3,7 +3,7 @@ class Product:
     name: str
     description: str
     price: float
-    quantity_in_stock: int
+    quantity: int
 
 
     def __init__(self, name, description, price, quantity):
@@ -37,7 +37,7 @@ class Product:
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
-        return (self.__price * self.quantity) + (other.__price * other.quantity)
+        return (self.__price * self.quantity) + (other.price * other.quantity)
 
 
 pear_data = {

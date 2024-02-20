@@ -32,21 +32,25 @@ class Category:
         return list_of_products
 
 
-    def __len__(self):
-        return len(self.__products)
+    @property
+    def quantity(self):
+        quantity_of_products = 0
+        for quantity in self.__products:
+            quantity = quantity.quantity
+            quantity_of_products = quantity_of_products + quantity
+        return quantity_of_products
 
+    def __len__(self):
+        return len(str(self.quantity))
 
     def __str__(self):
-        return f"{self.name}, количество продуктов: {len(self.__products)} шт."
-
+        return f"{self.name}, количество продуктов: {len(str(self.quantity))} шт."
 
 
 category_1 = Category('Фрукты', 'Свежие фрукты', all_products)
 
-
 print(category_1.products[0])
 print(category_1.products[1])
 print(category_1.products[2])
-
 
 print(category_1)
