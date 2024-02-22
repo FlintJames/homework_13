@@ -31,3 +31,6 @@ def product_orange():
 def test___str__(product_orange):
     assert "Fruits, количество продуктов: 5 шт."
 
+def test___len__(product_orange):
+    assert 5
+
