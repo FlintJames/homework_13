@@ -18,8 +18,11 @@ class Category:
         Category.number_of_unique_products += len(products)
 
     def add_product(self, product):
-        Category.number_of_unique_products += 1
-        return self.__products.append(product)
+        if isinstance(product, Product):
+            Category.number_of_unique_products += 1
+            return self.__products.append(product)
+        else:
+            raise TypeError
 
     @property
     def products(self):
