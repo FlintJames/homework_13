@@ -1,4 +1,3 @@
-
 class Product:
     name: str
     description: str
@@ -6,14 +5,12 @@ class Product:
     quantity: int
     colour: str
 
-
     def __init__(self, name, description, price, quantity, color):
         self.name = name
         self.description = description
         self.__price = price
         self.quantity = quantity
         self.colour = color
-
 
     @classmethod
     def create_product(cls, product_data):
@@ -23,7 +20,6 @@ class Product:
         quantity = product_data['quantity']
         color = product_data['color']
         return cls(name, description, price, quantity, color)
-
 
     @property
     def price(self):
@@ -40,11 +36,10 @@ class Product:
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
-        if isinstance(other, self.__class__):
+        if type(other) == type(self):
             return (self.__price * self.quantity) + (other.price * other.quantity)
         else:
             raise TypeError
-
 
 
 class Smartphone(Product):
@@ -58,10 +53,10 @@ class Smartphone(Product):
         self.model = model
         self.amount_of_internal_memory = amount_of_internal_memory
 
-class Lawn_grass(Product):
+
+class LawnGrass(Product):
     country_of_origin: str
     germination_period: int
-
 
     def __init__(self, country_of_origin, germination_period):
         super().__init__(name, description, price, quantity, color)
@@ -91,6 +86,8 @@ product_2 = Product('Апельсин', 'Красный ароматный ап�
 product_3 = Product('Банан', 'Жёлтый манящий банан', 69.99, 30, 'Жёлтый')
 all_products = [product_1, product_2, product_3]
 
+
 print(product_1)
 
 print(product_1 + product_2)
+

@@ -20,8 +20,8 @@ class Category:
     def add_product(self, product):
         if isinstance(product, Product):
             Category.number_of_unique_products += 1
-            return self.__products.append(product)
-        else:
+            self.__products.append(product)
+
             raise TypeError
 
     @property
