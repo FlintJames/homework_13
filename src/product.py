@@ -37,6 +37,7 @@ class Product:
 
     def __add__(self, other):
         if type(other) == type(self):
+            issubclass(self.__class__, Product)
             return (self.__price * self.quantity) + (other.price * other.quantity)
         else:
             raise TypeError
@@ -47,7 +48,7 @@ class Smartphone(Product):
     model: str
     amount_of_internal_memory: float
 
-    def __init__(self, efficiency, model, amount_of_internal_memory):
+    def __init__(self, name, description, price, quantity, color, efficiency, model, amount_of_internal_memory):
         super().__init__(name, description, price, quantity, color)
         self.efficiency = efficiency
         self.model = model
@@ -58,7 +59,7 @@ class LawnGrass(Product):
     country_of_origin: str
     germination_period: int
 
-    def __init__(self, country_of_origin, germination_period):
+    def __init__(self, name, description, price, quantity, color, country_of_origin, germination_period):
         super().__init__(name, description, price, quantity, color)
         self.country_of_origin = country_of_origin
         self.germination_period = germination_period
@@ -83,11 +84,13 @@ print(new_product.name)
 
 product_1 = Product('Яблоко', 'Сочное яблоко', 79.90, 15, 'Красное')
 product_2 = Product('Апельсин', 'Красный ароматный апельсин', 69.99, 30, 'Оранжевый')
-product_3 = Product('Банан', 'Жёлтый манящий банан', 69.99, 30, 'Жёлтый')
+product_3 = Product('Банан', 'Жёлтый манящий банан', 89.99, 30, 'Жёлтый')
 all_products = [product_1, product_2, product_3]
+product_4 = Smartphone('Apple iPhone', 'Смартфон с титановым корпусом', 211199.99, 10, 'Серый', 3.78, 'Apple iPhone 15 Pro Max', 1024)
 
 
 print(product_1)
 
 print(product_1 + product_2)
+print(product_1 + product_4)
 
