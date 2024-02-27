@@ -36,11 +36,12 @@ class Product:
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
-        if type(other) == type(self):
-            issubclass(self.__class__, Product)
-            return (self.__price * self.quantity) + (other.price * other.quantity)
-        else:
+        if not issubclass(self.__class__, (Smartphone, LawnGrass)):
             raise TypeError
+        elif type(self) != type(other):
+            raise TypeError
+        else:
+            return (self.__price * self.quantity) + (other.price * other.quantity)
 
 
 class Smartphone(Product):
@@ -92,5 +93,5 @@ product_4 = Smartphone('Apple iPhone', 'Смартфон с титановым �
 print(product_1)
 
 print(product_1 + product_2)
-print(product_1 + product_4)
+print(product_1 + product_3)
 
