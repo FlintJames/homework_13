@@ -55,7 +55,7 @@ class Smartphone(Product):
 
     def __add__(self, other):
         if isinstance(other, Smartphone):
-            return (self.__price * self.quantity) + (other.price * other.quantity)
+            return (self.price * self.quantity) + (other.price * other.quantity)
 
         raise TypeError
 
@@ -71,7 +71,7 @@ class LawnGrass(Product):
 
     def __add__(self, other):
         if isinstance(other, LawnGrass):
-            return (self.__price * self.quantity) + (other.price * other.quantity)
+            return (self.price * self.quantity) + (other.price * other.quantity)
 
         raise TypeError
 
@@ -98,12 +98,12 @@ product_2 = Product('Апельсин', 'Красный ароматный ап�
 product_3 = Product('Банан', 'Жёлтый манящий банан', 89.99, 30, 'Жёлтый')
 all_products = [product_1, product_2, product_3]
 
-product_4 = Smartphone('Apple iPhone', 'Смартфон с титановым корпусом', 211199.99, 10, 'Серый', 3.78,
+product_4 = Smartphone('Apple iPhone', 'Смартфон с титановым корпусом', 210199.99, 5, 'Серый', 3.78,
                        'Apple iPhone 15 Pro Max', 1024)
-product_5 = Smartphone('Apple iPhone', 'Смартфон с титановым корпусом', 100900.99, 10, 'Серый', 3.78,
+product_5 = Smartphone('Apple iPhone', 'Смартфон с титановым корпусом', 100900.99, 3, 'Серый', 3.78,
                        'Apple iPhone 15 Pro Max', 1024)
-product_6 = LawnGrass('Мятлик луговой', 'Отличная устойчивость и плотность', 14000.90, 50, 'Зелёный', 'Нидерланды', 5)
-product_7 = LawnGrass('Мятлик луговой', 'Отличная устойчивость и плотность', 15000.90, 50, 'Зелёный', 'Нидерланды', 5)
+product_6 = LawnGrass('Мятлик луговой', 'Отличная устойчивость и плотность', 14000, 50, 'Зелёный', 'Нидерланды', 5)
+product_7 = LawnGrass('Мятлик луговой', 'Отличная устойчивость и плотность', 15000, 40, 'Зелёный', 'Нидерланды', 5)
 
 print(product_1)
 print(product_4)
