@@ -34,8 +34,6 @@ class Category:
             list_of_products.append(f"{name}, {price} руб. Остаток: {quantity} шт.")
         return list_of_products
 
-
-
     def __len__(self):
         all_quantity = 0
         for product in self.__products:

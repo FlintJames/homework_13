@@ -36,12 +36,10 @@ class Product:
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
-        if not issubclass(Product, Product):
-            raise TypeError
-        elif type(self) != type(other):
-            raise TypeError
-        else:
+        if isinstance(other, Product):
             return (self.__price * self.quantity) + (other.price * other.quantity)
+
+        raise TypeError
 
 
 class Smartphone(Product):
@@ -55,6 +53,12 @@ class Smartphone(Product):
         self.model = model
         self.amount_of_internal_memory = amount_of_internal_memory
 
+    def __add__(self, other):
+        if isinstance(other, Smartphone):
+            return (self.__price * self.quantity) + (other.price * other.quantity)
+
+        raise TypeError
+
 
 class LawnGrass(Product):
     country_of_origin: str
@@ -64,6 +68,12 @@ class LawnGrass(Product):
         super().__init__(name, description, price, quantity, color)
         self.country_of_origin = country_of_origin
         self.germination_period = germination_period
+
+    def __add__(self, other):
+        if isinstance(other, LawnGrass):
+            return (self.__price * self.quantity) + (other.price * other.quantity)
+
+        raise TypeError
 
 
 pear_data = {
@@ -87,11 +97,16 @@ product_1 = Product('Яблоко', 'Сочное яблоко', 79.90, 15, 'К�
 product_2 = Product('Апельсин', 'Красный ароматный апельсин', 69.99, 30, 'Оранжевый')
 product_3 = Product('Банан', 'Жёлтый манящий банан', 89.99, 30, 'Жёлтый')
 all_products = [product_1, product_2, product_3]
-product_4 = Smartphone('Apple iPhone', 'Смартфон с титановым корпусом', 211199.99, 10, 'Серый', 3.78, 'Apple iPhone 15 Pro Max', 1024)
 
+product_4 = Smartphone('Apple iPhone', 'Смартфон с титановым корпусом', 211199.99, 10, 'Серый', 3.78,
+                       'Apple iPhone 15 Pro Max', 1024)
+product_5 = Smartphone('Apple iPhone', 'Смартфон с титановым корпусом', 100900.99, 10, 'Серый', 3.78,
+                       'Apple iPhone 15 Pro Max', 1024)
+product_6 = LawnGrass('Мятлик луговой', 'Отличная устойчивость и плотность', 14000.90, 50, 'Зелёный', 'Нидерланды', 5)
 
 print(product_1)
+print(product_4)
 
 print(product_1 + product_2)
-print(product_1 + product_4)
-
+print(product_1 + product_3)
+print(product_4 + product_5)
