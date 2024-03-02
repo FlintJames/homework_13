@@ -18,8 +18,13 @@ class AbstractProduct(ABC):
     def __add__(self, other):
         pass
 
+class MixinLog:
 
-class Product(AbstractProduct):
+    def __repr__(self):
+        return f'{self.__class__.__name__}("{self.name}", "{self.description}", {self.price}, {self.quantity})'
+
+
+class Product(MixinLog, AbstractProduct):
     name: str
     description: str
     price: float
@@ -62,6 +67,9 @@ class Product(AbstractProduct):
 
         raise TypeError
 
+    def __repr__(self):
+        super().__repr__()
+
 
 class Smartphone(Product):
     efficiency: float
@@ -80,6 +88,9 @@ class Smartphone(Product):
 
         raise TypeError
 
+    def __repr__(self):
+        super().__repr__()
+
 
 class LawnGrass(Product):
     country_of_origin: str
@@ -95,6 +106,9 @@ class LawnGrass(Product):
             return (self.price * self.quantity) + (other.price * other.quantity)
 
         raise TypeError
+
+    def __repr__(self):
+        super().__repr__()
 
 
 pear_data = {
