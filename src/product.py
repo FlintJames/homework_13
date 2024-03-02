@@ -1,4 +1,25 @@
-class Product:
+from abc import ABC, abstractmethod
+
+
+class AbstractProduct(ABC):
+    @abstractmethod
+    def create_product(self):
+        pass
+
+    @abstractmethod
+    def price(self):
+        pass
+
+    @abstractmethod
+    def __str__(self):
+        pass
+
+    @abstractmethod
+    def __add__(self, other):
+        pass
+
+
+class Product(AbstractProduct):
     name: str
     description: str
     price: float
