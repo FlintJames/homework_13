@@ -18,11 +18,14 @@ class Category:
         Category.number_of_unique_products += len(products)
 
     def add_product(self, product):
-        if isinstance(product, Product):
-            Category.number_of_unique_products += 1
-            self.__products.append(product)
-
-            raise TypeError
+        if product.count > 0:
+            if isinstance(product, Product):
+                self.__products.add(product)
+                Category.number_of_unique_products += 1
+            else:
+                raise TypeError
+        else:
+            raise ValueError("Количество товара не может равняться нулю")
 
     @property
     def products(self):
@@ -33,6 +36,17 @@ class Category:
             quantity = product.quantity
             list_of_products.append(f"{name}, {price} руб. Остаток: {quantity} шт.")
         return list_of_products
+
+    def average_values(self):
+        try:
+            avg_count = 0
+            summ = 0
+            for item in range(Category.number_of_unique_products):
+                summ += self.__products
+                avg_count = summ / Category.number_of_unique_products
+            return avg_count
+        except ZeroDivisionError:
+            return 0
 
     def __len__(self):
         all_quantity = 0
